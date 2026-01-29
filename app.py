@@ -58,3 +58,30 @@ st.line_chart(chart_data)
 # 底部信息
 st.divider()
 st.caption("✨ 这个应用已成功部署到 Streamlit Cloud")
+# 在文件末尾添加以下代码：
+
+st.divider()
+st.subheader("🎯 新功能测试")
+
+# 添加选择框
+option = st.selectbox(
+    "选择一个你喜欢的水果：",
+    ("苹果", "香蕉", "橙子", "草莓", "葡萄")
+)
+st.write(f"你选择了：{option}")
+
+# 添加复选框
+if st.checkbox("显示额外信息"):
+    st.info("这是一个额外信息的演示！")
+    
+# 添加进度条演示
+if st.button("开始进度演示"):
+    import time
+    progress_text = "操作进行中..."
+    my_bar = st.progress(0, text=progress_text)
+    
+    for percent_complete in range(100):
+        time.sleep(0.01)
+        my_bar.progress(percent_complete + 1, text=progress_text)
+    my_bar.empty()
+    st.success("✅ 进度完成！")
